@@ -7,6 +7,8 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   font-family: 'Alkalami', sans-serif;
+  overflow: hidden;
+  animation: removeHidden .1s linear 3.5s forwards;
 }
 
 a {
@@ -26,4 +28,10 @@ a {
     color: white;
     background: black;
   }
+}
+
+@keyframes removeHidden {
+  100% {
+    overflow: initial;
+  }  
 }

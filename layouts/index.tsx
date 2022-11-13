@@ -1,5 +1,6 @@
 import styles from './Layout.module.scss';
-import portal from '../public/assets/portal.png'
+// import portal from '../public/assets/portal.png'
+import portal from '../public/assets/rickymorty-portal.png'
 import { useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
 
