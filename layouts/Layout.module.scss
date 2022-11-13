@@ -1,0 +1,38 @@
+@import '../styles/mixins';
+
+.main {
+  min-height: 100vh;
+}
+
+.logoStart {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: black;
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: dark;
+    }
+    body {
+      color: white;
+      background: black;
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 64/67;
+    height: auto;
+
+    @include breakpoint(mobile) {
+      max-width: 200px;
+    }
+  }
+}

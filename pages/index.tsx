@@ -1,21 +1,35 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+//styles
+import styles from '../styles/Home.module.scss';
 
-export default function Home() {
+//components
+import CharactersBottom from '../components/charactersBottom'
+import CharactersTop from '../components/charactersTop'
+
+//utils
+import { BASE_URL } from '../utils/constants'
+
+export default function Home({}) {
+  
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Next js app consuming Rick and Morty api" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className={styles.Home}>
+      <header>Wubba Lubba Dub Dub!</header>
+      
+      <CharactersTop />
 
-      <main className={styles.main}>
-      </main>
-
-      <footer className={styles.footer}>
-      </footer>
+      <CharactersBottom />
     </div>
   )
+}
+
+export const getServerSideProps = async () => {
+  const initialData = await fetch(BASE_URL + '/character');
+  const response = await initialData.json();
+
+  console.log(response)
+
+  return {
+    props: {
+      characters: response,
+    },
+  }
 }
