@@ -2,21 +2,33 @@
 import styles from '../styles/Home.module.scss';
 
 //components
-import CharactersBottom from '../components/charactersBottom'
-import CharactersTop from '../components/charactersTop'
+import PanelBottom from '../components/panelBottom'
+import PanelTop from '../components/panelTop'
 
 //utils
 import { BASE_URL } from '../utils/constants'
 
-export default function Home({}) {
+type ApiResponse = {
+  info: {
+    count: number,
+    pages: number,
+    next?: string,
+    prev?: string,
+  };
+  results: any[];
+}
+
+interface HomeProps {
+  apiResponse: ApiResponse;
+}
+
+export default function Home({apiResponse}: HomeProps) {
   
   return (
     <div className={styles.Home}>
-      <header>Wubba Lubba Dub Dub!</header>
-      
-      <CharactersTop />
+      <PanelTop pageData={apiResponse} />
 
-      <CharactersBottom />
+      <PanelBottom />
     </div>
   )
 }
@@ -29,7 +41,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      characters: response,
+      apiResponse: response,
     },
   }
 }

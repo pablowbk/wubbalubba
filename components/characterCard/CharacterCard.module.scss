@@ -1,0 +1,62 @@
+.CharacterCard {
+  max-width: 300px;
+  display: flex;
+  cursor: pointer;
+  gap: 1rem;
+
+  &:hover {
+      
+    img {
+      rotate: z -6deg;
+      scale: 1.1;
+    }
+  }
+
+  .picture {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .statusIcon {
+      right: 100%;
+      top: 0px;
+    }
+    
+    .img_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .25s ease-in-out;
+      clip-path: circle();
+      
+      img {
+        aspect-ratio: 1;
+        object-fit: cover;
+        transition: .25s ease-in-out;
+      }
+    }
+    
+  }
+
+  .info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+
+    .cardInfo_top {
+      display: flex;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .cardInfo_bottom {
+      display: flex;
+      gap: 10px;
+      font-size: .8rem;
+    }
+  }
+}

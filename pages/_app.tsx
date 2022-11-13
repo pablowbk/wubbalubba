@@ -1,5 +1,10 @@
+//styles
 import '../styles/globals.scss'
+
+//types
 import type { AppProps } from 'next/app'
+
+//components
 import NextNProgress from 'nextjs-progressbar';
 import Layout from '../layouts';
 import Head from 'next/head';
