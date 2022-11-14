@@ -1,10 +1,11 @@
 //styles
 import styles from './PanelTop.module.scss';
 
+//hooks
+import { useState } from 'react';
+
 //components
-import Image from "next/image";
 import { Character } from "../../types/apiTypes";
-import CharacterCard from "../characterCard/CharacterCard";
 import PanelSection from './PanelSection';
 import Divider from './Divider';
 
@@ -25,16 +26,26 @@ interface PanelTopProps {
 const PanelTop: React.FC<PanelTopProps> = ({pageData}): JSX.Element => {
   console.log({pageData})
   const { info, results } = pageData;
+  const [selectedLeft, setSelectedLeft] = useState<Character>(null);
+  const [selectedRight, setSelectedRight] = useState<Character>(null);
   
   return (
     <div className={styles.PanelTop}>
       {/* left pane */}
-      <PanelSection charactersList={results} />
+      <PanelSection 
+        charactersList={results} 
+        selectedCharacter={selectedLeft} 
+        selectCharacter={setSelectedLeft}
+      />
 
-      <Divider color={'#02accb'} />
+      {/* <Divider color={'#02accb'} /> */}
 
       {/* right pane */}
-      <PanelSection charactersList={results} />
+      <PanelSection 
+        charactersList={results} 
+        selectedCharacter={selectedRight} 
+        selectCharacter={setSelectedRight}
+      />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 .PanelTop {
   height: 70vh;
-  overflow-y: auto;
+  // overflow-y: hidden;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
+  padding: 1rem;
 }

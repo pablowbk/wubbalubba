@@ -1,4 +1,33 @@
+@import "../../styles/variables";
+
 .PanelSection {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid $main;
+  border-radius: 10px;
+  padding: 15px 10px;
+  
+  .list_wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: thin;  /* Firefox */
+    scrollbar-color: $main none;
+  
+    &::-webkit-scrollbar { /* Safari and Chrome */
+      width: 3px;
+      height: 3px;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb { /* Safari and Chrome */
+      background: $main;
+      border-radius: 10px;
+    }
+  
+    &::-webkit-scrollbar-gutter { /* Safari and Chrome */
+      width: 10px;
+    }
+  }
 }
