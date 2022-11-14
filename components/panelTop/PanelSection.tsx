@@ -10,8 +10,8 @@ import CharacterCard from "../characterCard/CharacterCard";
 
 interface PanelSectionProps {
   charactersList: Character[];
-  selectCharacter: Dispatch<SetStateAction<Character>>;
-  selectedCharacter: Character;
+  selectCharacter: Dispatch<SetStateAction<Character | null>>;
+  selectedCharacter: Character | null;
 }
 
 const PanelSection: React.FC<PanelSectionProps> = ({ charactersList, selectCharacter, selectedCharacter }): JSX.Element => {

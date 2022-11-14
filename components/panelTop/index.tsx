@@ -26,8 +26,8 @@ interface PanelTopProps {
 const PanelTop: React.FC<PanelTopProps> = ({pageData}): JSX.Element => {
   console.log({pageData})
   const { info, results } = pageData;
-  const [selectedLeft, setSelectedLeft] = useState<Character>(null);
-  const [selectedRight, setSelectedRight] = useState<Character>(null);
+  const [selectedLeft, setSelectedLeft] = useState<Character | null>(null);
+  const [selectedRight, setSelectedRight] = useState<Character | null>(null);
   
   return (
     <div className={styles.PanelTop}>
