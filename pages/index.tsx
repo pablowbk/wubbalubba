@@ -25,11 +25,15 @@ interface HomeProps {
 export default function Home({apiResponse}: HomeProps) {
   
   return (
-    <div className={styles.Home}>
+    <section className={styles.Home}>
+      <header>
+        <h2>Select <strong>one character</strong> from <strong>each panel</strong></h2>
+        <p>A comparisson of your selection will be shown in the bottom panel.</p>
+      </header>
       <PanelTop pageData={apiResponse} />
 
       <PanelBottom />
-    </div>
+    </section>
   )
 }
 
