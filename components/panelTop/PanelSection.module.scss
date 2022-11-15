@@ -11,6 +11,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    padding-inline-end: 15px;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: thin;  /* Firefox */

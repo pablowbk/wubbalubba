@@ -21,7 +21,6 @@ const CharacterCard: React.FC<CharacterCardProps> = ({data}) => {
         <div className={styles.img_wrapper}>
           <Image src={image} layout={'responsive'} width={80} height={80} alt={name} />
         </div>
-        <StatusIcon status={status} className={styles.statusIcon} />
       </div>
       <div className={styles.info}>
         <div className={styles.cardInfo_top}>
@@ -29,9 +28,10 @@ const CharacterCard: React.FC<CharacterCardProps> = ({data}) => {
         </div>
 
         <div className={styles.cardInfo_bottom}>
-          <p>{species}</p>
-          <span>-</span>
+          <StatusIcon status={status} className={styles.statusIcon} />
           <p>{status}</p>
+          <span>-</span>
+          <p>{species}</p>
         </div>
       </div>
     </div>
