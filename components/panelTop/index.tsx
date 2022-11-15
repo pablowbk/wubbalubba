@@ -2,7 +2,7 @@
 import styles from './PanelTop.module.scss';
 
 //hooks
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 
 //components
 import { Character } from "../../types/apiTypes";
@@ -20,14 +20,18 @@ type ApiResponse = {
 }
 
 interface PanelTopProps {
-  pageData: ApiResponse
+  pageData: ApiResponse;
+  setCompareLeft: Dispatch<SetStateAction<Character | null>>;
+  setCompareRight: Dispatch<SetStateAction<Character | null>>;
 }
 
-const PanelTop: React.FC<PanelTopProps> = ({pageData}): JSX.Element => {
+const PanelTop: React.FC<PanelTopProps> = ({pageData, setCompareLeft, setCompareRight}): JSX.Element => {
   console.log({pageData})
   const { info, results } = pageData;
   const [selectedLeft, setSelectedLeft] = useState<Character | null>(null);
   const [selectedRight, setSelectedRight] = useState<Character | null>(null);
+
+
   
   return (
     <div className={styles.PanelTop}>

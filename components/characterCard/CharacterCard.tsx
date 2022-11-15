@@ -31,10 +31,11 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   }
 
   const isSelected = selectedCharacter?.id === data.id;
+  const notSelected = selectedCharacter && selectedCharacter.id !== data.id
 
   return (
     <div 
-      className={`${styles.CharacterCard} ${isSelected ? styles.selected : ''}`}
+      className={`${styles.CharacterCard} ${isSelected ? styles.selected : ''} ${notSelected ? styles.notSelected : ''}`}
       onClick={handleCardClick}
     >
       <div className={styles.picture}>

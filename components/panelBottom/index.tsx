@@ -1,5 +1,14 @@
+import { Character } from "../../types/apiTypes"
 
-const PanelBottom: React.FC = (): JSX.Element => {
+interface PanelBottomProps {
+  compareLeft: Character | null;
+  compareRight: Character | null;
+}
+
+const PanelBottom: React.FC<PanelBottomProps> = ({
+  compareLeft,
+  compareRight,
+}): JSX.Element => {
   return (
     <div>CharactersBottom</div>
   )

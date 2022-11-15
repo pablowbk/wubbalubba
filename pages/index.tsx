@@ -18,11 +18,16 @@ type ApiResponse = {
   results: any[];
 }
 
+import { useState } from 'react';
+import { Character } from '../types/apiTypes';
+
 interface HomeProps {
   apiResponse: ApiResponse;
 }
 
 export default function Home({apiResponse}: HomeProps) {
+  const [compareLeft, setCompareLeft] = useState<Character | null>(null);
+  const [compareRight, setCompareRight] = useState<Character | null>(null);
   
   return (
     <section className={styles.Home}>
@@ -30,9 +35,9 @@ export default function Home({apiResponse}: HomeProps) {
         <h2>Select <strong>one character</strong> from <strong>each panel</strong></h2>
         <p>A comparisson of your selection will be shown in the bottom panel.</p>
       </header>
-      <PanelTop pageData={apiResponse} />
+      <PanelTop pageData={apiResponse} setCompareLeft={setCompareLeft} setCompareRight={setCompareRight} />
 
-      <PanelBottom />
+      <PanelBottom compareLeft={compareLeft} compareRight={compareRight} />
     </section>
   )
 }

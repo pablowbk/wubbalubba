@@ -17,7 +17,7 @@ interface PanelSectionProps {
 const PanelSection: React.FC<PanelSectionProps> = ({ 
   charactersList, 
   selectCharacter, 
-  selectedCharacter 
+  selectedCharacter,
 }): JSX.Element => {
 
   return (
