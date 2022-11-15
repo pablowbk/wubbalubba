@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Layout>
       <Head>
         <title>Wubba Lubba</title>
+        <link rel="shortcut icon" type="image/jpg" href="/assets/portal.png" />
       </Head>
       <NextNProgress color='#02accb' startPosition={0.3} stopDelayMs={200} height={5} showOnShallow={true} />
       <Component {...pageProps} />
