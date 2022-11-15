@@ -14,13 +14,22 @@ interface PanelSectionProps {
   selectedCharacter: Character | null;
 }
 
-const PanelSection: React.FC<PanelSectionProps> = ({ charactersList, selectCharacter, selectedCharacter }): JSX.Element => {
+const PanelSection: React.FC<PanelSectionProps> = ({ 
+  charactersList, 
+  selectCharacter, 
+  selectedCharacter 
+}): JSX.Element => {
 
   return (
     <div className={styles.PanelSection}>
       <div className={styles.list_wrapper}>
       {charactersList.map(character => (
-        <CharacterCard data={character} key={character.id} />
+        <CharacterCard 
+          data={character} 
+          key={character.id} 
+          selectCharacter={selectCharacter}
+          selectedCharacter={selectedCharacter}
+        />
       ))}
       </div>
     </div>

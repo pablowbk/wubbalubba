@@ -7,16 +7,36 @@ import Image from "next/image";
 //types
 import { Character } from "../../types/apiTypes"
 import StatusIcon from '../statusIcon/StatusIcon';
+import { Dispatch, SetStateAction } from 'react';
 
 interface CharacterCardProps {
   data: Character;
+  selectCharacter: Dispatch<SetStateAction<Character | null>>;
+  selectedCharacter: Character | null;
 }
 
-const CharacterCard: React.FC<CharacterCardProps> = ({data}) => {
+const CharacterCard: React.FC<CharacterCardProps> = ({
+  data,
+  selectCharacter,
+  selectedCharacter,
+}) => {
   const {image, name, species, status} = data;
 
+  const handleCardClick = () => {
+    if (selectedCharacter?.id !== data.id) {
+      selectCharacter(data);
+    } else {
+      selectCharacter(null)
+    }
+  }
+
+  const isSelected = selectedCharacter?.id === data.id;
+
   return (
-    <div className={styles.CharacterCard}>
+    <div 
+      className={`${styles.CharacterCard} ${isSelected ? styles.selected : ''}`}
+      onClick={handleCardClick}
+    >
       <div className={styles.picture}>
         <div className={styles.img_wrapper}>
           <Image src={image} layout={'responsive'} width={80} height={80} alt={name} />

@@ -3,7 +3,7 @@
   display: flex;
   cursor: pointer;
   gap: 1rem;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 2px 2px 5px 0px #02accb;
   transition: .3s ease-out;
 
@@ -19,20 +19,22 @@
   }
 
   .picture {
-    flex: 1;
+    // flex: 1;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-radius: 10px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+    // border-radius: 20px;
+    // border-bottom-right-radius: 0;
+    // border-top-right-radius: 0;
     
     .img_wrapper {
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
+      max-width: 200px;
       
       img {
         aspect-ratio: 1;
@@ -44,7 +46,8 @@
   }
 
   .info {
-    flex: 2;
+    // flex: 2;
+    // position: absolute;x
     display: flex;
     flex-direction: column;
     justify-content: center;
