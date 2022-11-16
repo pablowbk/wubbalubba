@@ -12,7 +12,7 @@
   }
 
   &.notSelected {
-    filter: grayscale(1) blur(2px);
+    filter: grayscale(1);
   }
 
   &:hover {

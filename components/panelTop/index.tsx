@@ -2,44 +2,32 @@
 import styles from './PanelTop.module.scss';
 
 //hooks
-import { useState, Dispatch, SetStateAction } from 'react';
+import { useContext } from 'react';
 
 //components
-import { Character } from "../../types/apiTypes";
 import PanelSection from './PanelSection';
-import Divider from './Divider';
 
-type ApiResponse = {
-  info: {
-    count: number,
-    pages: number,
-    next?: string,
-    prev?: string,
-  };
-  results: Character[];
-}
+//type
+import { Character, responseData } from "../../types/apiTypes";
+
+//context
+import { SelectedContext } from '../../context';
 
 interface PanelTopProps {
-  pageData: ApiResponse;
-  setCompareLeft: Dispatch<SetStateAction<Character | null>>;
-  setCompareRight: Dispatch<SetStateAction<Character | null>>;
+  pageData: responseData;
 }
 
-const PanelTop: React.FC<PanelTopProps> = ({pageData, setCompareLeft, setCompareRight}): JSX.Element => {
-  console.log({pageData})
+const PanelTop: React.FC<PanelTopProps> = ({pageData}): JSX.Element => {
   const { info, results } = pageData;
-  const [selectedLeft, setSelectedLeft] = useState<Character | null>(null);
-  const [selectedRight, setSelectedRight] = useState<Character | null>(null);
-
-
+  const { compareLeft, setCompareLeft, compareRight, setCompareRight } = useContext(SelectedContext);
   
   return (
     <div className={styles.PanelTop}>
       {/* left pane */}
       <PanelSection 
         charactersList={results} 
-        selectedCharacter={selectedLeft} 
-        selectCharacter={setSelectedLeft}
+        selectedCharacter={compareLeft} 
+        selectCharacter={setCompareLeft}
       />
 
       {/* <Divider color={'#02accb'} /> */}
@@ -47,8 +35,8 @@ const PanelTop: React.FC<PanelTopProps> = ({pageData, setCompareLeft, setCompare
       {/* right pane */}
       <PanelSection 
         charactersList={results} 
-        selectedCharacter={selectedRight} 
-        selectCharacter={setSelectedRight}
+        selectedCharacter={compareRight} 
+        selectCharacter={setCompareRight}
       />
     </div>
   )

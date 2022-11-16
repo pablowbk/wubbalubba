@@ -28,10 +28,10 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
     } else {
       selectCharacter(null)
     }
-  }
+  };
 
   const isSelected = selectedCharacter?.id === data.id;
-  const notSelected = selectedCharacter && selectedCharacter.id !== data.id
+  const notSelected = selectedCharacter && selectedCharacter.id !== data.id;
 
   return (
     <div 
@@ -40,7 +40,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
     >
       <div className={styles.picture}>
         <div className={styles.img_wrapper}>
-          <Image src={image} layout={'responsive'} width={80} height={80} alt={name} />
+          <Image src={image} width={80} height={80} alt={name} />
         </div>
       </div>
       <div className={styles.info}>

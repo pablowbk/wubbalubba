@@ -1,4 +1,37 @@
+@import '../../styles/variables';
+
 .PanelBottom {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+
+  .section {
+
+    h3 {
+      position: relative;
+      display: inline-block;
+      font-family: 'Alkalami', sans-serif;
+      line-height: 1em;
+      color: $main;
+
+      span {
+        color: initial;
+      }
+  
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: currentColor;
+        box-shadow: 0 2px 5px 0 rgba(255,255,255,.6);
+      }
+
+      &.middle {
+        color: $green;
+      }
+    }
+  }
 }

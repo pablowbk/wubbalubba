@@ -8,18 +8,11 @@ import PanelTop from '../components/panelTop'
 //utils
 import { BASE_URL } from '../utils/constants'
 
-type ApiResponse = {
-  info: {
-    count: number,
-    pages: number,
-    next?: string,
-    prev?: string,
-  };
-  results: any[];
-}
+//context
+import { SelectedContext } from '../context';
 
 import { useState } from 'react';
-import { Character } from '../types/apiTypes';
+import { ApiResponse, Character } from '../types/apiTypes';
 
 interface HomeProps {
   apiResponse: ApiResponse;
@@ -35,22 +28,52 @@ export default function Home({apiResponse}: HomeProps) {
         <h2>Select <strong>one character</strong> from <strong>each panel</strong></h2>
         <p>A comparisson of your selection will be shown in the bottom panel.</p>
       </header>
-      <PanelTop pageData={apiResponse} setCompareLeft={setCompareLeft} setCompareRight={setCompareRight} />
 
-      <PanelBottom compareLeft={compareLeft} compareRight={compareRight} />
+      <SelectedContext.Provider value={{
+        compareLeft, 
+        setCompareLeft, 
+        compareRight, 
+        setCompareRight,
+      }}>
+        <PanelTop pageData={apiResponse.charactersData} />
+
+        {compareLeft && compareRight && (
+          <PanelBottom episodesData={apiResponse.episodesData} />
+        )}
+      </SelectedContext.Provider>
     </section>
   )
 }
 
 export const getServerSideProps = async () => {
-  const initialData = await fetch(BASE_URL + '/character');
-  const response = await initialData.json();
+  // const getAllEpisodes = async () => {
+  //   const episodesList = [];
 
-  console.log(response)
+  //   con
+  // }
+
+  try {
+    const fetchCharacters = await fetch(BASE_URL + '/character');
+    var charactersData = await fetchCharacters.json();
+
+    const fetchEpisodes = await fetch(BASE_URL + '/episode');
+    var episodesData = await fetchEpisodes.json();
+
+  } catch (e) {
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
-      apiResponse: response,
+      apiResponse: {
+        charactersData,
+        episodesData,
+      }
     },
   }
 }
