@@ -18,7 +18,6 @@ interface PanelBottomProps {
 const PanelBottom: React.FC<PanelBottomProps> = ({
   episodesData
 }): JSX.Element => {
-  console.log({episodesData})
   const { compareLeft, compareRight } = useContext(SelectedContext);
 
   const leftEpisodes = compareLeft?.episode;
