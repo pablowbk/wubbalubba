@@ -1,6 +1,6 @@
 export type ApiResponse = {
   charactersData: responseData;
-  episodesData: responseData;
+  episodesData: Episode[];
 }
 
 export type responseData = {

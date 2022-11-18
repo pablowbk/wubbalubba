@@ -2,16 +2,17 @@
 import styles from './PanelBottom.module.scss';
 
 //types
-import { Character, responseData } from "../../types/apiTypes"
+import { Episode } from "../../types/apiTypes";
 
 //context
 import { SelectedContext } from '../../context';
 
 //hooks
 import { useContext } from 'react';
+import EpisodeItem from './episode/Episode';
 
 interface PanelBottomProps {
-  episodesData: responseData
+  episodesData: Episode[];
 }
 
 const PanelBottom: React.FC<PanelBottomProps> = ({
@@ -24,11 +25,15 @@ const PanelBottom: React.FC<PanelBottomProps> = ({
 
   const rightEpisodes = compareRight?.episode;
 
-  const onlyLeftEpisodes = leftEpisodes?.filter(leftEpi => !rightEpisodes?.find(rightEpi => leftEpi === rightEpi)) 
-  const sharedEpisodes = leftEpisodes?.filter(leftEpi => rightEpisodes?.find(rightEpi => leftEpi === rightEpi)) 
-  const onlyRightEpisodes = rightEpisodes?.filter(rightEpi => !leftEpisodes?.find(leftEpi => rightEpi === leftEpi)) 
+  // episodes from Character obj
+  const onlyLeftEpisodes = leftEpisodes?.filter(leftEpi => !rightEpisodes?.find(rightEpi => leftEpi === rightEpi)); 
+  const sharedEpisodes = leftEpisodes?.filter(leftEpi => rightEpisodes?.find(rightEpi => leftEpi === rightEpi)); 
+  const onlyRightEpisodes = rightEpisodes?.filter(rightEpi => !leftEpisodes?.find(leftEpi => rightEpi === leftEpi)); 
 
-  console.log({onlyLeftEpisodes, sharedEpisodes, onlyRightEpisodes});
+  // Populating full episode info
+  const leftFormatted = episodesData.filter(fullEpisode => onlyLeftEpisodes?.find(urlEpisode => fullEpisode.url === urlEpisode));
+  const sharedFormatted = episodesData.filter(fullEpisode => sharedEpisodes?.find(urlEpisode => fullEpisode.url === urlEpisode));
+  const rightFormatted = episodesData.filter(fullEpisode => onlyRightEpisodes?.find(urlEpisode => fullEpisode.url === urlEpisode));
 
   return (
     <div className={styles.PanelBottom}>
@@ -36,25 +41,31 @@ const PanelBottom: React.FC<PanelBottomProps> = ({
         <h3>
           <span>{compareLeft?.name}</span> Only <span>Episodes</span>
         </h3>
-        {onlyLeftEpisodes?.map((episode, id) => (
-          <p key={id}>{episode}</p>
-        ))}
+        <ul className={styles.episodesList}>
+          {leftFormatted?.map((episode) => (
+            <EpisodeItem episode={episode} color={'#02accb'}/>
+          ))}
+        </ul>
       </div>
       <div className={styles.section}>
         <h3 className={styles.middle}>
           Shared <span>Episodes</span>
         </h3>
-        {sharedEpisodes?.map((episode, id) => (
-          <p key={id}>{episode}</p>
-        ))}
+        <ul className={styles.episodesList}>
+          {sharedFormatted?.map((episode) => (
+            <EpisodeItem episode={episode} color={'#a8cb55'}/>
+          ))}
+        </ul>
       </div>
       <div className={styles.section}>
         <h3>
           <span>{compareRight?.name}</span> Only <span>Episodes</span>
         </h3>
-        {onlyRightEpisodes?.map((episode, id) => (
-          <p key={id}>{episode}</p>
-        ))}
+        <ul className={styles.episodesList}>
+          {rightFormatted?.map((episode) => (
+            <EpisodeItem episode={episode} color={'#02accb'}/>
+          ))}
+        </ul>
       </div>
     </div>
   )
