@@ -5,29 +5,39 @@ export type ApiResponse = {
 
 export type responseData = {
   info: {
-    count: number,
-    pages: number,
-    next?: string,
-    prev?: string,
+    count: number;
+    pages: number;
+    next?: string;
+    prev?: string;
   };
   results: any[];
 }
 
-export type Character = {
+export interface CharacterLocation {
+  name: string;
+  url: string;
+}
+
+export interface ResourceBase {
   id: number;
   name: string;
-  status: 'Alive' | 'Dead' | 'unknown';
-  species: string;
-  type: string;
-  gender: string;
-  origin: object;
-  location: object;
-  image: string;
-  episode: string[];
   url: string;
   created: string;
 }
 
-export type Episode = {
-  
+export interface Character extends ResourceBase {
+  status: 'Dead' | 'Alive' | 'unknown';
+  species: string;
+  type: string;
+  gender: 'Female' | 'Male' | 'Genderless' | 'unknown';
+  origin: CharacterLocation;
+  location: CharacterLocation;
+  image: string;
+  episode: string[];
+}
+
+export interface Episode extends ResourceBase {
+  air_date: string;
+  episode: string;
+  character: string[];
 }
