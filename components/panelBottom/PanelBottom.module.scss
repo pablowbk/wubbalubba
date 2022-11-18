@@ -5,6 +5,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1em;
+  margin-block: 2em 4em;
+  padding-inline: 2em;
 
   @include breakpoint(tablet) {
     grid-template-columns: 1fr;
@@ -49,6 +51,9 @@
 
     .episodesList {
       list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
     }
   }
 }
