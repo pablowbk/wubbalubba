@@ -43,7 +43,7 @@ const PanelBottom: React.FC<PanelBottomProps> = ({
         </h3>
         <ul className={styles.episodesList}>
           {leftFormatted?.map((episode) => (
-            <EpisodeItem episode={episode} color={'#02accb'}/>
+            <EpisodeItem episode={episode} color={'#02accb'} key={episode.id}/>
           ))}
         </ul>
       </div>
@@ -53,7 +53,7 @@ const PanelBottom: React.FC<PanelBottomProps> = ({
         </h3>
         <ul className={styles.episodesList}>
           {sharedFormatted?.map((episode) => (
-            <EpisodeItem episode={episode} color={'#a8cb55'}/>
+            <EpisodeItem episode={episode} color={'#a8cb55'} key={episode.id}/>
           ))}
         </ul>
       </div>
@@ -63,7 +63,7 @@ const PanelBottom: React.FC<PanelBottomProps> = ({
         </h3>
         <ul className={styles.episodesList}>
           {rightFormatted?.map((episode) => (
-            <EpisodeItem episode={episode} color={'#02accb'}/>
+            <EpisodeItem episode={episode} color={'#02accb'} key={episode.id}/>
           ))}
         </ul>
       </div>

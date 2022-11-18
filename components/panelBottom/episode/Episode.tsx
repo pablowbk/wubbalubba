@@ -11,7 +11,7 @@ interface EpisodeItemProps {
 
 const EpisodeItem: React.FC<EpisodeItemProps> = ({episode, color}) => {
   return (
-    <li key={episode.id} className={styles.Episode}>
+    <li className={styles.Episode}>
       <p className={styles.number} style={{color}}>#{episode.id}</p>
 
       <p style={{color}}>
