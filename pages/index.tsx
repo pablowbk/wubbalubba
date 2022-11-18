@@ -21,7 +21,7 @@ interface HomeProps {
 export default function Home({apiResponse}: HomeProps) {
   const [compareLeft, setCompareLeft] = useState<Character | null>(null);
   const [compareRight, setCompareRight] = useState<Character | null>(null);
-  console.log(apiResponse)
+
   return (
     <section className={styles.Home}>
       <header>
@@ -59,18 +59,11 @@ export const getServerSideProps = async () => {
     }  
   }
 
-  // console.log(getAllEpisodes([], BASE_URL + '/episode').then(res => res.json()))
-
   try {
     const fetchCharacters = await fetch(BASE_URL + '/character');
     var charactersData = await fetchCharacters.json();
 
-    // const fetchEpisodes = await fetch(BASE_URL + '/episode');
-    // var episodesData = await fetchEpisodes.json();
-    // await getAllEpisodes([], BASE_URL + '/episode');
-    
-    var episodesData = await getAllEpisodes([], BASE_URL + '/episoe');
-    // console.log({episodesData})
+    var episodesData = await getAllEpisodes([], BASE_URL + '/episode');
 
   } catch (e) {
     console.log({error: e})
