@@ -21,7 +21,7 @@ interface HomeProps {
 export default function Home({apiResponse}: HomeProps) {
   const [compareLeft, setCompareLeft] = useState<Character | null>(null);
   const [compareRight, setCompareRight] = useState<Character | null>(null);
-  
+  console.log(apiResponse)
   return (
     <section className={styles.Home}>
       <header>
@@ -46,20 +46,34 @@ export default function Home({apiResponse}: HomeProps) {
 }
 
 export const getServerSideProps = async () => {
-  // const getAllEpisodes = async () => {
-  //   const episodesList = [];
+  const getAllEpisodes = async (list: any[], nextUrl: string): Promise<any> => {
+    const getPageResults = await fetch(nextUrl);
+    const { info, results } = await getPageResults.json();
 
-  //   con
-  // }
+    const episodes = [...list, ...results];
+    
+    if (info.next) {
+      return await getAllEpisodes(episodes, info.next);
+    } else {
+      return episodes;
+    }  
+  }
+
+  // console.log(getAllEpisodes([], BASE_URL + '/episode').then(res => res.json()))
 
   try {
     const fetchCharacters = await fetch(BASE_URL + '/character');
     var charactersData = await fetchCharacters.json();
 
-    const fetchEpisodes = await fetch(BASE_URL + '/episode');
-    var episodesData = await fetchEpisodes.json();
+    // const fetchEpisodes = await fetch(BASE_URL + '/episode');
+    // var episodesData = await fetchEpisodes.json();
+    // await getAllEpisodes([], BASE_URL + '/episode');
+    
+    var episodesData = await getAllEpisodes([], BASE_URL + '/episoe');
+    // console.log({episodesData})
 
   } catch (e) {
+    console.log({error: e})
     return {
       redirect: {
         destination: '/404',
@@ -72,7 +86,7 @@ export const getServerSideProps = async () => {
     props: {
       apiResponse: {
         charactersData,
-        episodesData,
+        episodesData: episodesData ?? null,
       }
     },
   }
