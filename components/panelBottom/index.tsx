@@ -5,7 +5,7 @@ import styles from './PanelBottom.module.scss';
 import { Episode } from "../../types/apiTypes";
 
 //context
-import { SelectedContext } from '../../context';
+import { SelectedContext } from '../../context/selected';
 
 //hooks
 import { useContext } from 'react';

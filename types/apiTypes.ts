@@ -4,13 +4,15 @@ export type ApiResponse = {
 }
 
 export type responseData = {
-  info: {
-    count: number;
-    pages: number;
-    next?: string;
-    prev?: string;
-  };
+  info: Info;
   results: any[];
+}
+
+export interface Info {
+  count: number;
+  pages: number;
+  next: string | null;
+  prev: string | null;
 }
 
 export interface CharacterLocation {

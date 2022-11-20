@@ -1,0 +1,40 @@
+@import "../../styles/variables";
+
+.Loader {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .img_wrapper {
+    background-color: white;
+    backdrop-filter: blur(4px);
+    padding: 10px 20px;
+    border-radius: 30px;
+    
+    .loader_img {
+      position: relative;
+      opacity: 0;
+      animation: fadeInOut 1s ease-in-out infinite;
+      
+      &:last-child {
+        animation-delay: .5s;
+      }
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      background-color: black;
+      
+      .loader_img {
+        filter: invert(1);
+      }
+    }
+  }
+
+}
+
+@keyframes fadeInOut {
+  50% { opacity: 1};  
+}

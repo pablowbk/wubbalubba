@@ -5,6 +5,10 @@
   border: 1px solid $main;
   border-radius: 10px;
   padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  position: relative;
   
   .list_wrapper {
     height: 100%;
@@ -12,7 +16,10 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     padding-inline-end: 15px;
+    padding-block-end: 10px;
     overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: thin;  /* Firefox */
     scrollbar-color: $main none;

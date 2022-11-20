@@ -1,5 +1,5 @@
-import React, { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
-import { Character } from '../types/apiTypes';
+import { createContext, Dispatch, SetStateAction } from 'react';
+import { Character } from '../../types/apiTypes';
 
 type SelectedContextType =  {
   compareLeft: Character | null;

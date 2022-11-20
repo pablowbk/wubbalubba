@@ -8,33 +8,33 @@ import { useContext } from 'react';
 import PanelSection from './PanelSection';
 
 //type
-import { Character, responseData } from "../../types/apiTypes";
+import { responseData } from "../../types/apiTypes";
 
 //context
-import { SelectedContext } from '../../context';
+import { SelectedContext } from '../../context/selected';
 
 interface PanelTopProps {
   pageData: responseData;
 }
 
 const PanelTop: React.FC<PanelTopProps> = ({pageData}): JSX.Element => {
-  const { info, results } = pageData;
   const { compareLeft, setCompareLeft, compareRight, setCompareRight } = useContext(SelectedContext);
+  // console.log({info})
   
   return (
     <div className={styles.PanelTop}>
       {/* left pane */}
       <PanelSection 
-        charactersList={results} 
+        panel={'left'}
+        initialApiData={pageData} 
         selectedCharacter={compareLeft} 
         selectCharacter={setCompareLeft}
       />
 
-      {/* <Divider color={'#02accb'} /> */}
-
       {/* right pane */}
       <PanelSection 
-        charactersList={results} 
+        panel={'right'}
+        initialApiData={pageData} 
         selectedCharacter={compareRight} 
         selectCharacter={setCompareRight}
       />

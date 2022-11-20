@@ -9,7 +9,7 @@ import PanelTop from '../components/panelTop'
 import { BASE_URL } from '../utils/constants'
 
 //context
-import { SelectedContext } from '../context';
+import { SelectedContext } from '../context/selected';
 
 import { useState } from 'react';
 import { ApiResponse, Character } from '../types/apiTypes';

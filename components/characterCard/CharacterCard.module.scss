@@ -2,6 +2,7 @@
 @import "../../styles/mixins";
 
 .CharacterCard {
+  scroll-snap-align: start;
   max-width: 300px;
   display: grid;
   grid-template-areas: 'main';
@@ -27,7 +28,7 @@
 
   &:hover {
     img {
-      rotate: z -6deg;
+      // rotate: z -6deg;
       scale: 1.1;
     }
   }
@@ -35,23 +36,20 @@
   .picture {
     grid-area: main;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1;
     // border-radius: 20px;
     // border-bottom-right-radius: 0;
     // border-top-right-radius: 0;
     
     .img_wrapper {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 200px;
+      position: relative;
       height: 100%;
       width: 100%;
-      aspect-ratio: 1;
+      // max-width: 200px;
+      
       
       img {
         object-fit: cover;
@@ -68,10 +66,10 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     gap: 10px;
-    padding-bottom: 1rem;
+    padding-block-end: 1rem;
     padding-inline: 1rem;
     background-image: linear-gradient(to top, #02accbcc 0% 30%, #ffffff00);
     transition: .3s ease-out;
