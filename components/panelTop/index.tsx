@@ -25,7 +25,6 @@ const PanelTop: React.FC<PanelTopProps> = ({pageData}): JSX.Element => {
     <div className={styles.PanelTop}>
       {/* left pane */}
       <PanelSection 
-        panel={'left'}
         initialApiData={pageData} 
         selectedCharacter={compareLeft} 
         selectCharacter={setCompareLeft}
@@ -33,7 +32,6 @@ const PanelTop: React.FC<PanelTopProps> = ({pageData}): JSX.Element => {
 
       {/* right pane */}
       <PanelSection 
-        panel={'right'}
         initialApiData={pageData} 
         selectedCharacter={compareRight} 
         selectCharacter={setCompareRight}

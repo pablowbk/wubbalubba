@@ -43,3 +43,5 @@ export interface Episode extends ResourceBase {
   episode: string;
   character: string[];
 }
+
+export type CharactersPerPage = Character[];

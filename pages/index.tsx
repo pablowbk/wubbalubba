@@ -12,7 +12,8 @@ import { BASE_URL } from '../utils/constants'
 import { SelectedContext } from '../context/selected';
 
 import { useState } from 'react';
-import { ApiResponse, Character } from '../types/apiTypes';
+import { ApiResponse, Character, CharactersPerPage } from '../types/apiTypes';
+import { CharactersPaginatedContext } from '../context/characters';
 
 interface HomeProps {
   apiResponse: ApiResponse;
@@ -21,6 +22,7 @@ interface HomeProps {
 export default function Home({apiResponse}: HomeProps) {
   const [compareLeft, setCompareLeft] = useState<Character | null>(null);
   const [compareRight, setCompareRight] = useState<Character | null>(null);
+  const [charactersPaginated, setCharactersPaginated] = useState<CharactersPerPage[] | null>([apiResponse.charactersData.results]);
 
   return (
     <section className={styles.Home}>
@@ -35,7 +37,12 @@ export default function Home({apiResponse}: HomeProps) {
         compareRight, 
         setCompareRight,
       }}>
-        <PanelTop pageData={apiResponse.charactersData} />
+        <CharactersPaginatedContext.Provider value={{
+          charactersPaginated,
+          setCharactersPaginated,
+        }}>
+          <PanelTop pageData={apiResponse.charactersData} />
+        </CharactersPaginatedContext.Provider>
 
         {compareLeft && compareRight && (
           <PanelBottom episodesData={apiResponse.episodesData} />

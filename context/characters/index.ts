@@ -1,7 +1,11 @@
-import { createContext } from 'react';
+import { createContext, Dispatch, SetStateAction } from 'react';
+import { CharactersPerPage } from '../../types/apiTypes';
 
-type ChactersContextType =  {
-  
+type CharactersListAll = CharactersPerPage[];
+
+type CharactersContextType =  {
+  charactersPaginated: CharactersListAll | null;
+  setCharactersPaginated: Dispatch<SetStateAction<CharactersPerPage[] | null>>;
 }
 
-export const SelectedContext = createContext<ChactersContextType>({} as ChactersContextType);
+export const CharactersPaginatedContext = createContext<CharactersContextType>({} as CharactersContextType);
