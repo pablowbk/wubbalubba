@@ -7,10 +7,10 @@ import { Dispatch, SetStateAction, useState, useContext } from 'react';
 
 //components
 import CharacterCard from "../characterCard/CharacterCard";
-import Paginated from '../pagination/Paginated';
 import Loader from '../loader';
+
+//context
 import { CharactersPaginatedContext } from '../../context/characters';
-import { BASE_URL } from '../../utils/constants';
 
 interface PanelSectionProps {
   initialApiData: responseData;
@@ -39,15 +39,8 @@ const PanelSection: React.FC<PanelSectionProps> = ({
       setPageInfo(json.info);
       setCharactersPaginated(prev => [...prev!, json.results])
     })
-
     setLoading(false)
-
-  }   
-  
-  const handlePrevPage = async () => {
-    if (currentPage === 1) return;
-    setCurrentPage(prev => prev - 1);
-  }
+  } 
 
   const handleNextPage = async () => {
     if (currentPage === totalPages || loading) return;
@@ -57,6 +50,11 @@ const PanelSection: React.FC<PanelSectionProps> = ({
     } else {
       setCurrentPage(prev => prev + 1);
     }
+  }
+
+  const handlePrevPage = () => {
+    if (currentPage === 1) return;
+    setCurrentPage(prev => prev - 1);
   }
   
   return (
@@ -76,17 +74,13 @@ const PanelSection: React.FC<PanelSectionProps> = ({
       </div>
 
       <div className={styles.pagination_nav}>
-        <button 
-          onClick={handlePrevPage}
-        >
+        <button onClick={handlePrevPage}>
          &lt; Prev
         </button>
 
         <p>{currentPage} of {totalPages}</p>
 
-        <button 
-          onClick={handleNextPage}
-        >
+        <button onClick={handleNextPage}>
           Next &gt;
         </button>
       </div>

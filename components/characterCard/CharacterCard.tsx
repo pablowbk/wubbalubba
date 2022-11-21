@@ -7,7 +7,7 @@ import Image from "next/image";
 //types
 import { Character } from "../../types/apiTypes"
 import StatusIcon from '../statusIcon/StatusIcon';
-import { Dispatch, SetStateAction, useRef } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 interface CharacterCardProps {
   data: Character;
