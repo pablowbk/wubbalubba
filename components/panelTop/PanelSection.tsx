@@ -2,7 +2,7 @@
 import styles from './PanelSection.module.scss';
 
 //types
-import { Character, responseData } from "../../types/apiTypes";
+import { Character, ResponseData } from "../../types/apiTypes";
 import { Dispatch, SetStateAction, useState, useContext } from 'react';
 
 //components
@@ -13,7 +13,7 @@ import Loader from '../loader';
 import { CharactersPaginatedContext } from '../../context/characters';
 
 interface PanelSectionProps {
-  initialApiData: responseData;
+  initialApiData: ResponseData;
   selectCharacter: Dispatch<SetStateAction<Character | null>>;
   selectedCharacter: Character | null;
 }
@@ -33,13 +33,23 @@ const PanelSection: React.FC<PanelSectionProps> = ({
   const fetchNextPage = async () => {
     setLoading(true);
     
-    await fetch(`${pageInfo.next}`)
-    .then(res => res.json())
-    .then((json: responseData) => {
-      setPageInfo(json.info);
-      setCharactersPaginated(prev => [...prev!, json.results])
-    })
-    setLoading(false)
+    try {
+      const response = await fetch(`${pageInfo.next}`);
+      console.log(response);
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const {info, results}: ResponseData = await response.json();
+      
+      setPageInfo(info);
+      setCharactersPaginated(prev => [...prev!, results])
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false)
+    }
   } 
 
   const handleNextPage = async () => {
