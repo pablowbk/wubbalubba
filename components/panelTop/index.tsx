@@ -8,13 +8,13 @@ import { useContext } from 'react';
 import PanelSection from './PanelSection';
 
 //type
-import { responseData } from "../../types/apiTypes";
+import { ResponseData } from "../../types/apiTypes";
 
 //context
 import { SelectedContext } from '../../context/selected';
 
 interface PanelTopProps {
-  pageData: responseData;
+  pageData: ResponseData;
 }
 
 const PanelTop: React.FC<PanelTopProps> = ({pageData}): JSX.Element => {

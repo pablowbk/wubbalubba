@@ -1,9 +1,9 @@
 export type ApiResponse = {
-  charactersData: responseData;
+  charactersData: ResponseData;
   episodesData: Episode[];
 }
 
-export type responseData = {
+export type ResponseData = {
   info: Info;
   results: any[];
 }
