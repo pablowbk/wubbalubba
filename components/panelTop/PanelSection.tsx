@@ -35,7 +35,6 @@ const PanelSection: React.FC<PanelSectionProps> = ({
     
     try {
       const response = await fetch(`${pageInfo.next}`);
-      console.log(response);
 
       if (!response.ok) {
         throw new Error(response.statusText);

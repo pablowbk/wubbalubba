@@ -9,13 +9,3 @@ type SelectedContextType =  {
 }
 
 export const SelectedContext = createContext<SelectedContextType>({} as SelectedContextType);
-
-// const AppProvider = ({children}: {children: ReactNode}) => {
-//   const [state, setState] = useState<Character>();
-
-//   return (
-//     <SelectedContext.Provider value={{nole: gusta}}>{children}</SelectedContext.Provider> 
-//   );
-// }
-
-// export default AppProvider;

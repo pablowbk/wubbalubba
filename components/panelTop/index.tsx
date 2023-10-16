@@ -19,7 +19,6 @@ interface PanelTopProps {
 
 const PanelTop: React.FC<PanelTopProps> = ({pageData}): JSX.Element => {
   const { compareLeft, setCompareLeft, compareRight, setCompareRight } = useContext(SelectedContext);
-  // console.log({info})
   
   return (
     <div className={styles.PanelTop}>

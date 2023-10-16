@@ -29,7 +29,6 @@
 
   &:hover {
     img {
-      // rotate: z -6deg;
       scale: 1.1;
     }
   }
@@ -41,22 +40,15 @@
     height: 100%;
     width: 100%;
     aspect-ratio: 1;
-    // border-radius: 20px;
-    // border-bottom-right-radius: 0;
-    // border-top-right-radius: 0;
     
     .img_wrapper {
       position: relative;
       height: 100%;
       width: 100%;
-      // max-width: 200px;
-      
       
       img {
         object-fit: cover;
         transition: .3s ease-out;
-        // width: 100%;
-        // height: 100%;
       }
     }
     

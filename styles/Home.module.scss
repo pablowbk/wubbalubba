@@ -13,7 +13,6 @@
     margin-inline: 2em;
     display: flex;
     flex-direction: column;
-    // gap: .5rem;
     
     @include breakpoint(mobile) {
       margin-block: 1em;
@@ -21,8 +20,6 @@
 
     h2 {
       font-size: clamp(.8rem, 6vmin, 1.5rem);
-      // font-family: 'Six Caps', sans-serif;
-      // letter-spacing: 10px;
       font-family: 'Alkalami', sans-serif;
       line-height: 1em;
 
